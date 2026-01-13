@@ -56,7 +56,7 @@ async fn handle_connection(stream: TcpStream, agents: Agents) -> std::io::Result
     // Инициализируем reader для основного цикла
     let mut lines = BufReader::new(reader).lines();
 
-    tx.send("Enter your name (#username).".to_string())
+    tx.send("Put '/connect' to connect to this gateway".to_string())
         .await
         .ok();
 
@@ -76,7 +76,7 @@ async fn handle_connection(stream: TcpStream, agents: Agents) -> std::io::Result
         if line.starts_with("###") {
             let username = line[3..].to_string();
             name = Some(username.clone());
-            tx.send(format!("System: Welcome, {}! Send messages as: {}: |@username your message", username, username)).await.ok();
+            tx.send(format!("System: Welcome, {}! Send messages as: {}: @username your message", username, username)).await.ok();
             tx.send("System: Type @all ... to broadcast to everyone except you.".to_string()).await.ok();
             println!("[{}] {} joined", peer, username);
             agents.write().await.insert(username.clone(), tx.clone());
