@@ -11,7 +11,7 @@ type Agents = Arc<RwLock<HashMap<String, Tx>>>;
 // type MessageQueue = Arc<RwLock<HashMap<String, Vec<String>>>>;
 
 const IP: &str = "0.0.0.0";
-const PORT: u16 = 3939;
+const PORT: u16 = 3929;
 
 #[tokio::main]
 async fn main() -> std::io::Result<()> {
