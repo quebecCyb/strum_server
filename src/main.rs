@@ -10,7 +10,7 @@ type Agents = Arc<RwLock<HashMap<String, Tx>>>;
 
 // type MessageQueue = Arc<RwLock<HashMap<String, Vec<String>>>>;
 
-const IP: &str = "127.0.0.1";
+const IP: &str = "0.0.0.0";
 const PORT: u16 = 3939;
 
 #[tokio::main]
